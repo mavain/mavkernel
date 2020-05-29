@@ -8,4 +8,8 @@ gdt_load:
 
     mov esp, ebp
     pop ebp
+
+    jmp 0x10:.far_jmp_lbl       ; I spent a week trying to figure out why the ISRs would #GPF
+    .far_jmp_lbl:               ; If you don't far jump the GDT is still old and RIP your ISRs and patience
+
     ret

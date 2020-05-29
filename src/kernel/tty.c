@@ -76,9 +76,9 @@ void terminal_writehex8(uint8_t n)
         terminal_putchar(high + 'A' - 10);
     else
         terminal_putchar(high + '0');
-    
+
     if (low > 9)
-        terminal_putchar(low + 'A' - 9);
+        terminal_putchar(low + 'A' - 10);
     else
         terminal_putchar(low + '0');
 }
@@ -87,12 +87,12 @@ void terminal_writehex32(uint32_t n)
 {
     terminal_putchar('0');
     terminal_putchar('x');
-    for (uint8_t x = 7; x != 255; x--) {
+    for (uint8_t x = 7; x != 255; x--)
+    {
         uint8_t low = (uint8_t)(n >> (x << 2)) & 0xF;
         if (low > 9)
             terminal_putchar(low + 'A' - 10);
         else
             terminal_putchar(low + '0');
-        
     }
 }

@@ -7,7 +7,7 @@ void gdt_create_entry(struct gdt_segment_descriptor *descriptor, uint32_t base, 
 
     uint8_t *target = (uint8_t *)descriptor;
 
-    if (limit <= 0xFFFF)
+    if (limit <= 0x10000)
     {
         target[6] = 0x40;
     }
